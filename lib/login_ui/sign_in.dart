@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class SignIn extends StatelessWidget {
 
- final Function()? onTap;
-   SignIn({super.key,required this.onTap});
+  final Function()? onTap;
+  SignIn({super.key,required this.onTap});
 
   @override
   Widget build(BuildContext context) {

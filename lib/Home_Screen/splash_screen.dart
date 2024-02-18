@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'first_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'sign_in_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -10,11 +11,12 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen>
+    with TickerProviderStateMixin {
   bool isPressed = false;
 
-  late AnimationController _blinkController;
-  late Animation<Color?> _blinkAnimation;
+  late AnimationController _fadeController;
+  late Animation<double> _fadeAnimation;
 
   @override
   void initState() {
@@ -28,32 +30,32 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
       );
     });
 
-    _blinkController = AnimationController(
+    _fadeController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 500),
+      duration: Duration(milliseconds: 1000),
     );
 
-    _blinkAnimation = _blinkController.drive(
-      ColorTween(
-        begin: Colors.red,
-        end: Colors.transparent,
+    _fadeAnimation = _fadeController.drive(
+      Tween(
+        begin: 0.0,
+        end: 1.0,
       ),
     );
 
-    _blinkController.addStatusListener((status) {
+    _fadeController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        _blinkController.reverse();
+        _fadeController.reverse();
       } else if (status == AnimationStatus.dismissed) {
-        _blinkController.forward();
+        _fadeController.forward();
       }
     });
 
-    _blinkController.forward();
+    _fadeController.forward();
   }
 
   @override
   void dispose() {
-    _blinkController.dispose();
+    _fadeController.dispose();
     super.dispose();
   }
 
@@ -62,24 +64,33 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     return Scaffold(
       backgroundColor: Color(0xFF00000F),
       body: Container(
-        color: Colors.blueAccent,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.purple, Colors.blue],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
         child: Center(
           child: AnimatedBuilder(
-            animation: _blinkAnimation,
+            animation: _fadeAnimation,
             builder: (context, child) {
-              return Text(
-                'Solution',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 40,
-                  fontWeight: FontWeight.w800,
-                  shadows: [
-                    for (double i = 1; i < (isPressed ? 12 : 6); i++)
-                      Shadow(
-                        color: _blinkAnimation.value ?? Colors.transparent,
-                        blurRadius: 3 * i,
-                      )
-                  ],
+              return Opacity(
+                opacity: _fadeAnimation.value,
+                child: Text(
+                  'DONATION APP',
+                  style: GoogleFonts.pacifico(
+                    color: Colors.white,
+                    fontSize: 60,
+                    fontWeight: FontWeight.w800,
+                    shadows: [
+                      for (double i = 1; i < (isPressed ? 12 : 6); i++)
+                        Shadow(
+                          color: Colors.pink,
+                          blurRadius: 3 * i,
+                        )
+                    ],
+                  ),
                 ),
               );
             },
@@ -89,4 +100,3 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     );
   }
 }
-

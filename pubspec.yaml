@@ -35,10 +35,16 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+  google_sign_in: ^5.2.1
+  flutter_facebook_auth: ^6.1.0
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^10.6.0
   google_nav_bar: ^5.0.6
   curved_navigation_bar: ^1.0.3
+  firebase_core: ^2.25.4
+  firebase_auth: ^4.17.4
+  cloud_firestore: ^4.15.4
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +56,9 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.1
+  process: ^4.2.2
+#  flutterfire:
+#    ^0.22.2-nullsafety.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

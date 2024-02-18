@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "328341724561",
+    "project_id": "testting-83916",
+    "storage_bucket": "testting-83916.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328341724561:android:eaec9e7add5212dc370e30",
+        "android_client_info": {
+          "package_name": "com.example.solution_challege"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfWyNx9x-lR_9ASbH81fsuzLGu0PnPxHo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

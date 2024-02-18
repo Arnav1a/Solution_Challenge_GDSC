@@ -1,186 +1,125 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:solution_challege/Home_Screen/first_screen.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:solution_challege/Home_Screen/notification_screen.dart';
+import 'package:solution_challege/Home_Screen/payment_screen.dart';
+import 'package:solution_challege/Home_Screen/setting_screen.dart';
+import 'package:solution_challege/Home_Screen/sign_in_options_screen.dart';
 
-// class HomePage extends StatefulWidget {
-//   const HomePage({super.key});
-//
-//   @override
-//   State<HomePage> createState() => _HomePageState();
-// }
-//
-// class _HomePageState extends State<HomePage> {
-//
-//   void initState() {
-//     super.initState();
-//     Timer(Duration(seconds: 2), () {
-//       Navigator.pushReplacement(
-//         context,
-//         MaterialPageRoute(
-//           builder: (context) => FirstScreen(),
-//         ),
-//       );
-//     });
-//   }
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Donation'),
-//       ),
-//       body: Column(
-//         children: [
-//           Row(),
-//           Row(),
-//           Row(),
-//           Row(
-//             children: [
-//               Column(),
-//               Column(),
-//             ],
-//           ),
-//
-//           Row(
-//             children: [
-//               Column(),
-//               Column(),
-//             ],
-//           )
-//         ],
-//       )
-//     );
-//   }
-// }
+class HomePage extends StatefulWidget {
+  final String? selectedRole;
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key, this.selectedRole}) : super(key: key);
 
-  void navigateToScreen(BuildContext context, int index) {
-    Widget screen;
-    switch (index) {
-      case 0:
-        screen = FirstScreen();
-        break;
-      case 1:
-        screen = FirstScreen();
-        break;
-      case 2:
-        screen = FirstScreen();
-        break;
-      case 3:
-        screen = FirstScreen();
-        break;
-      case 4:
-        screen = FirstScreen();
-        break;
-      default:
-        screen = FirstScreen(); // Navigate to FirstScreen by default
-        break;
-    }
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
 
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => screen,
-      ),
-    );
-  }
-
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Center(
-            child: Text('Donation')),
+          child: Text(
+            'Donation',
+            style: TextStyle(fontFamily: 'Pacifico'), // Custom font
+          ),
+        ),
       ),
       body: Column(
-
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 8.0,top: 20,),
-            child: Row(
+            padding: const EdgeInsets.only(left: 8.0, top: 20),
+            child: Text(
+              'Welcome to Our Donation App',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Montserrat', // Custom font
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Text(
+              'We help the poor and the needy by providing donations and support.',
+              style: TextStyle(
+                color: Colors.grey[800],
+                fontSize: 16,
+                fontFamily: 'Montserrat', // Custom font
+              ),
+            ),
+          ),
+          Expanded(
+            child: ListView(
               children: [
-                Text('Financial Assistance',style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),),
+                SizedBox(height: 20),
+                AspectRatio(
+                  aspectRatio: 16 / 9, // Adjust the aspect ratio as needed
+                  child: Image.asset(
+                    "assets/download.jpg",
+                    fit: BoxFit.cover, // Ensure the image covers the entire space
+                  ),
+                ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    'About Us',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Montserrat', // Custom font
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    'Our organization is committed to making a positive impact by providing assistance to those in need. With your support, we can make a difference in the lives of many.',
+                    style: TextStyle(
+                      color: Colors.grey[800],
+                      fontSize: 16,
+                      fontFamily: 'Montserrat', // Custom font
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    'How You Can Help',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Montserrat', // Custom font
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    'You can contribute to our cause by making a donation or volunteering your time. Together, we can make a difference in the world.',
+                    style: TextStyle(
+                      color: Colors.grey[800],
+                      fontSize: 16,
+                      fontFamily: 'Montserrat', // Custom font
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
-          Row(),
-          Row(),
-          Row(
-            children: [
-              Column(),
-              Column(),
-            ],
-          ),
-
-          Row(
-            children: [
-              Column(),
-              Column(),
-            ],
-          )
-
         ],
       ),
-
-        // bottomNavigationBar: Container(
-        //   color: Colors.black,
-        //   child: Padding(
-        //
-        //     padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 5),
-        //     child: GNav(
-        //       color: Colors.white,
-        //       backgroundColor: Colors.black,
-        //       activeColor: Colors.white,
-        //       tabBackgroundColor: Colors.grey.shade800,
-        //       gap: 3,
-        //       // onTabChange: (index) {
-        //       //   navigateToScreen(context, index);
-        //       // },
-        //     padding: EdgeInsets.all(18),
-        //     tabs: const [
-        //       GButton(
-        //         icon: Icons.home,
-        //         text: 'Home',
-        //
-        //       ),
-        //
-        //       GButton(
-        //         icon: Icons.search,
-        //         text: 'Search',
-        //       ),
-        //       GButton(
-        //           icon: Icons.notifications_active_outlined,
-        //       text: 'Notification',
-        //       ),
-        //       GButton(
-        //           icon: Icons.paypal,
-        //       text: 'Payment',
-        //       ),
-        //       GButton(
-        //         icon: Icons.settings,
-        //         text: 'Settings',
-        //       ),
-        //     ],
-        //         ),
-        //   ),
-        // ),
-
-      //
-
-
-
-
-
-
       bottomNavigationBar: Container(
-
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -192,16 +131,12 @@ class HomePage extends StatelessWidget {
           ),
         ),
         child: CurvedNavigationBar(
-          backgroundColor: Colors.transparent, // Set the background color to transparent
+          backgroundColor: Colors.transparent,
           color: Colors.transparent,
-          buttonBackgroundColor: Colors.teal[400],// Set the color to transparent
+          buttonBackgroundColor: Colors.teal[400],
           items: [
             Icon(
               Icons.home,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.search,
               color: Colors.white,
             ),
             Icon(
@@ -222,7 +157,35 @@ class HomePage extends StatelessWidget {
           },
         ),
       ),
-
     );
+  }
+
+  void navigateToScreen(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+      // Home screen, do nothing
+        break;
+      case 1:
+      // Notifications screen
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => NotificationScreen()),
+        );
+        break;
+      case 2:
+      // Payment screen
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => PaymentScreen(selectedRole: widget.selectedRole)),
+        );
+        break;
+      case 3:
+      // Settings screen
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SettingsScreen()),
+        );
+        break;
+    }
   }
 }
